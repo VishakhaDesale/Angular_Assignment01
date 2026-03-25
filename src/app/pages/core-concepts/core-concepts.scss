@@ -1,0 +1,263 @@
+// ─── Inline code mixin ────────────────────────────────────────────────────────
+@mixin about-code-inline {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: .72rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+// ─── Semantic colour tokens ───────────────────────────────────────────────────
+.about {
+  --_red:           #991b1b;
+  --_red-bg:        #fef2f2;
+  --_red-border:    #fecaca;
+  --_amber:         #92400e;
+  --_amber-bg:      #fffbeb;
+  --_amber-border:  #fde68a;
+  --_green:         #15803d;
+  --_green-bg:      #f0fdf4;
+  --_green-border:  #bbf7d0;
+  --_blue:          #1e40af;
+  --_blue-bg:       #eff6ff;
+  --_blue-border:   #bfdbfe;
+  --_purple:        #4c1d95;
+  --_purple-bg:     #f5f3ff;
+  --_purple-border: #ddd6fe;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about {
+    --_red:           #f87171;
+    --_red-bg:        #450a0a;
+    --_red-border:    #7f1d1d;
+    --_amber:         #fbbf24;
+    --_amber-bg:      #451a03;
+    --_amber-border:  #78350f;
+    --_green:         #4ade80;
+    --_green-bg:      #052e16;
+    --_green-border:  #166534;
+    --_blue:          #93c5fd;
+    --_blue-bg:       #172554;
+    --_blue-border:   #1e3a8a;
+    --_purple:        #c4b5fd;
+    --_purple-bg:     #2e1065;
+    --_purple-border: #4c1d95;
+  }
+}
+
+// ─── Page shell ───────────────────────────────────────────────────────────────
+.about {
+  max-width: 960px;
+
+  // ── Header ──
+  &__header   { margin-bottom: 2.5rem; }
+  &__eyebrow  {
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  &__title    { font-size: 2rem; font-weight: 700; margin-bottom: .75rem; }
+  &__subtitle {
+    font-size: .95rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  // ── Body layout ──
+  &__body { display: flex; flex-direction: column; gap: 2.5rem; }
+
+  // ── Section heading ──
+  &__section-title {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+    i { color: var(--accent); }
+  }
+
+  // ── Final tip banner ──
+  &__final-tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--accent) 7%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+
+  &__final-tip-icon {
+    font-size: 1.4rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+
+  &__final-tip-title {
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 .35rem;
+  }
+
+  &__final-tip-body {
+    font-size: .8rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+
+    em { font-style: italic; color: var(--accent); }
+  }
+}
+
+// ─── Topic grid ───────────────────────────────────────────────────────────────
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .875rem;
+
+  @media (max-width: 680px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Topic card ───────────────────────────────────────────────────────────────
+.topic-card {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  border-top-width: 3px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+
+  // Colour variants — top border accent
+  &--purple { border-top-color: var(--_purple-border); }
+  &--blue   { border-top-color: var(--_blue-border);   }
+  &--amber  { border-top-color: var(--_amber-border);  }
+  &--green  { border-top-color: var(--_green-border);  }
+  &--red    { border-top-color: var(--_red-border);    }
+
+  // ── Meta row (emoji + category) ──
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    margin-bottom: .1rem;
+  }
+
+  // ── Icon wrapper ──
+  &__icon-wrap {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-sm);
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  &__category {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  // ── Title ──
+  &__title {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  // ── Description ──
+  &__desc {
+    font-size: .78rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  // ── Bullet points ──
+  &__points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    margin: .15rem 0;
+    padding: 0;
+  }
+
+  &__point {
+    font-size: .76rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    display: flex;
+    align-items: flex-start;
+    gap: .4rem;
+
+    &::before {
+      content: '›';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .9rem;
+      flex-shrink: 0;
+      line-height: 1.35;
+    }
+  }
+
+  // ── Important box ──
+  &__important {
+    margin-top: auto;
+    padding: .55rem .75rem;
+    border-radius: calc(var(--radius-sm) - 2px);
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+  }
+
+  &__imp-label {
+    font-size: .63rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .15rem;
+  }
+
+  &__imp-item {
+    font-size: .74rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: .35rem;
+
+    &::before {
+      content: '→';
+      font-size: .72rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: .05rem;
+    }
+  }
+}

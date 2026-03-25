@@ -1,0 +1,20 @@
+<div class="layout" [class.layout--open]="sidebarOpen()">
+
+  <div class="layout__overlay" (click)="close()"></div>
+
+  <app-sidebar [isOpen]="sidebarOpen()" (closeSidebar)="close()" />
+
+  <div class="layout__body">
+    <header class="layout__topbar">
+      <button class="layout__burger" (click)="toggle()" aria-label="Toggle menu">
+        <i class="bi" [class.bi-list]="!sidebarOpen()" [class.bi-x-lg]="sidebarOpen()"></i>
+      </button>
+      <span class="layout__brand-mobile">Angular</span>
+    </header>
+
+    <main class="layout__content">
+      <router-outlet />
+    </main>
+  </div>
+
+</div>

@@ -1,0 +1,43 @@
+<div class="dashboard">
+
+    <header class="dashboard__header">
+      <div>
+        <p class="dashboard__eyebrow">Overview</p>
+        <h1 class="dashboard__title">Angular Platform</h1>
+        <p class="dashboard__subtitle">
+          A comprehensive framework for building scalable, maintainable single-page applications
+          with TypeScript, developed and maintained by Google.
+        </p>
+      </div>
+    </header>
+  
+    <div class="dashboard__stats">
+      @for (stat of stats; track stat.label) {
+        <div class="stat-card">
+          <div class="stat-card__icon" [style.background]="stat.color + '18'" [style.color]="stat.color">
+            <i class="bi" [class]="stat.icon"></i>
+          </div>
+          <div>
+            <p class="stat-card__value">{{ stat.value }}</p>
+            <p class="stat-card__label">{{ stat.label }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  
+    <section class="dashboard__section">
+      <h2 class="dashboard__section-title">Core Capabilities</h2>
+      <div class="dashboard__features">
+        @for (f of features; track f.title) {
+          <div class="feature-card">
+            <div class="feature-card__icon">
+              <i class="bi" [class]="f.icon"></i>
+            </div>
+            <h3 class="feature-card__title">{{ f.title }}</h3>
+            <p class="feature-card__desc">{{ f.desc }}</p>
+          </div>
+        }
+      </div>
+    </section>
+  
+  </div>

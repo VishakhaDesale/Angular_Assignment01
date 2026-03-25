@@ -1,0 +1,21 @@
+<div class="grid-page">
+
+  <header class="grid-page__header">
+    <div>
+      <p class="grid-page__eyebrow">Angular Releases</p>
+      <h1 class="grid-page__title">Angular Version History</h1>
+    </div>
+    <div class="grid-page__search">
+      <i class="bi bi-search grid-page__search-icon"></i>
+      <input class="grid-page__search-input" type="text" placeholder="Search versions..."
+        (input)="onFilterInput($event)" />
+    </div>
+  </header>
+
+  <div class="grid-page__table-wrap">
+    <ag-grid-angular class="ag-theme-quartz grid-page__grid" [rowData]="rowData" [columnDefs]="colDefs"
+      [quickFilterText]="quickFilter()" [pagination]="true" [paginationPageSize]="8"
+      [paginationPageSizeSelector]="false" [animateRows]="true" />
+  </div>
+
+</div>

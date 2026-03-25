@@ -1,0 +1,69 @@
+<div class="about">
+
+  <header class="about__header">
+    <p class="about__eyebrow">Angular Essentials</p>
+    <h1 class="about__title">Angular in Practice</h1>
+    <p class="about__subtitle">
+      A practical breakdown of production-level concepts, focusing on real usage, decision-making, and impact.
+    </p>
+  </header>
+
+  <div class="about__body">
+
+    <!-- Topic card grid -->
+    <section class="about__section">
+      <h2 class="about__section-title">
+        <i class="bi bi-grid-3x3-gap"></i> Core Concepts in Practice
+      </h2>
+
+      <div class="topic-grid">
+        @for (topic of topics; track topic.title) {
+        <div class="topic-card topic-card--{{ topic.variant }}">
+
+          <div class="topic-card__meta">
+            <div class="topic-card__icon-wrap">
+              <i class="bi" [class]="topic.icon"></i>
+            </div>
+            <span class="topic-card__category">{{ topic.category }}</span>
+          </div>
+
+          <p class="topic-card__title">{{ topic.title }}</p>
+          <p class="topic-card__desc">{{ topic.desc }}</p>
+
+          <ul class="topic-card__points">
+            @for (point of topic.points; track point) {
+            <li class="topic-card__point">{{ point }}</li>
+            }
+          </ul>
+
+          <div class="topic-card__important">
+            <span class="topic-card__imp-label">Key Takeaways</span>
+            @for (imp of topic.important; track imp) {
+            <span class="topic-card__imp-item">{{ imp }}</span>
+            }
+          </div>
+
+        </div>
+        }
+      </div>
+    </section>
+
+    <!-- Final tip -->
+    <div class="about__final-tip">
+      <div class="about__final-tip-icon">
+        <i class="bi bi-patch-check"></i>
+      </div>
+      <div>
+        <p class="about__final-tip-title">What makes this understanding strong</p>
+        <p class="about__final-tip-body">
+          Knowing Angular's APIs is table stakes. Understanding
+          <em>when</em> to use DI scoping, <em>why</em> OnPush matters at scale,
+          and <em>how</em> Signals and RxJS coexist — that is what separates
+          developers who build Angular apps from those who architect them.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
